@@ -19,7 +19,8 @@ public class GuicedPersistenceBindingTest
 		LogColourFormatter.setRenderBlack(false);
 		GuiceContext.inject();
 
-		AsyncPostStartup.getExecutionService().awaitTermination(10, TimeUnit.SECONDS);
+		AsyncPostStartup.getExecutionService()
+		                .awaitTermination(10, TimeUnit.SECONDS);
 
 		HibernatePersistenceValidationMode.Ddl.toString();
 	}
