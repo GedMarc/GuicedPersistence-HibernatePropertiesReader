@@ -273,7 +273,7 @@ public class HibernateEntityManagerProperties
 	 * <p>
 	 * A map of properties specific to a persistence unit
 	 *
-	 * @return the persistenceUnitSpecificMappings (type Map<String, HibernateEntityManagerProperties>) of this HibernateEntityManagerProperties object.
+	 * @return the persistenceUnitSpecificMappings (type Map String, HibernateEntityManagerProperties) of this HibernateEntityManagerProperties object.
 	 */
 	public static Map<String, HibernateEntityManagerProperties> getPersistenceUnitSpecificMappings()
 	{
