@@ -8,6 +8,9 @@ module com.jwebmp.guicedpersistence.readers.hibernateproperties {
 
 	exports com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
+	requires transitive org.hibernate.orm.core;
+	requires transitive org.hibernate.validator;
+
 	provides PropertiesConnectionInfoReader with HibernateDefaultConnectionBaseBuilder;
 	provides PropertiesEntityManagerReader with HibernateEntityManagerProperties;
 
