@@ -4,7 +4,8 @@ import com.jwebmp.guicedpersistence.services.PropertiesConnectionInfoReader;
 import com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader;
 
 module com.jwebmp.guicedpersistence.readers.hibernateproperties {
-	requires com.jwebmp.guicedpersistence;
+	requires transitive com.jwebmp.guicedpersistence;
+
 	exports com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
 	provides PropertiesConnectionInfoReader with HibernateDefaultConnectionBaseBuilder;
