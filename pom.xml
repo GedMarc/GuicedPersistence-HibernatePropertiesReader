@@ -71,6 +71,12 @@
             <type>jar</type>
         </dependency>
 
+    <!--    <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <type>jar</type>
+        </dependency>-->
+
     </dependencies>
 
     <scm>
@@ -97,13 +103,5 @@
                 </dependency>
             </dependencies>
         </profile>
-
-        <profile>
-            <id>jdk10</id>
-            <dependencies>
-
-            </dependencies>
-        </profile>
-
     </profiles>
 </project>

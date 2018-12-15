@@ -1,6 +1,6 @@
 package com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
-import com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader;
+import com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.HashMap;
@@ -11,17 +11,17 @@ import java.util.Properties;
  * Assigns entity manager properties based on progammatic changes
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class HibernateEntityManagerProperties
-		implements PropertiesEntityManagerReader
+public class HibernateEntityManagerIProperties
+		implements IPropertiesEntityManagerReader
 {
 	/**
 	 * A map of properties specific to a persistence unit
 	 */
-	private static final Map<String, HibernateEntityManagerProperties> persistenceUnitSpecificMappings = new HashMap<>();
+	private static final Map<String, HibernateEntityManagerIProperties> persistenceUnitSpecificMappings = new HashMap<>();
 	/**
 	 * The default properties to apply
 	 */
-	private static final HibernateEntityManagerProperties defaultProperties = new HibernateEntityManagerProperties();
+	private static final HibernateEntityManagerIProperties defaultProperties = new HibernateEntityManagerIProperties();
 
 	/**
 	 * Whether to set show sql true or not
@@ -88,11 +88,11 @@ public class HibernateEntityManagerProperties
 	private Boolean useValidatorApplyToDDL;
 
 	/**
-	 * Method getMaxFetchDepth returns the maxFetchDepth of this HibernateEntityManagerProperties object.
+	 * Method getMaxFetchDepth returns the maxFetchDepth of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Specifies the maximum fetch depth
 	 *
-	 * @return the maxFetchDepth (type int) of this HibernateEntityManagerProperties object.
+	 * @return the maxFetchDepth (type int) of this HibernateEntityManagerIProperties object.
 	 */
 	public int getMaxFetchDepth()
 	{
@@ -100,12 +100,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setMaxFetchDepth sets the maxFetchDepth of this HibernateEntityManagerProperties object.
+	 * Method setMaxFetchDepth sets the maxFetchDepth of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Specifies the maximum fetch depth
 	 *
 	 * @param maxFetchDepth
-	 * 		the maxFetchDepth of this HibernateEntityManagerProperties object.
+	 * 		the maxFetchDepth of this HibernateEntityManagerIProperties object.
 	 */
 	public void setMaxFetchDepth(Integer maxFetchDepth)
 	{
@@ -113,11 +113,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method isEnableFetchOutsizeLadyLoad returns the enableFetchOutsizeLadyLoad of this HibernateEntityManagerProperties object.
+	 * Method isEnableFetchOutsizeLadyLoad returns the enableFetchOutsizeLadyLoad of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * If it should be possible to lazy fetch outside of transactions,
 	 *
-	 * @return the enableFetchOutsizeLadyLoad (type boolean) of this HibernateEntityManagerProperties object.
+	 * @return the enableFetchOutsizeLadyLoad (type boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public boolean isEnableFetchOutsizeLadyLoad()
 	{
@@ -125,11 +125,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method isShowSql returns the showSql of this HibernateEntityManagerProperties object.
+	 * Method isShowSql returns the showSql of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether to set show sql true or not
 	 *
-	 * @return the showSql (type boolean) of this HibernateEntityManagerProperties object.
+	 * @return the showSql (type boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public boolean isShowSql()
 	{
@@ -137,11 +137,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method isFormatSql returns the formatSql of this HibernateEntityManagerProperties object.
+	 * Method isFormatSql returns the formatSql of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether to format the output sql
 	 *
-	 * @return the formatSql (type boolean) of this HibernateEntityManagerProperties object.
+	 * @return the formatSql (type boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public boolean isFormatSql()
 	{
@@ -149,11 +149,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method isUseSqlComments returns the useSqlComments of this HibernateEntityManagerProperties object.
+	 * Method isUseSqlComments returns the useSqlComments of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether or not to use sql comments
 	 *
-	 * @return the useSqlComments (type boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useSqlComments (type boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public boolean isUseSqlComments()
 	{
@@ -170,20 +170,20 @@ public class HibernateEntityManagerProperties
 	 *
 	 * @return The string,string map to apply
 	 *
-	 * @see com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader#processProperties(PersistenceUnit, Properties)
+	 * @see com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader#processProperties(PersistenceUnit, Properties)
 	 */
 	@Override
 	public Map<String, String> processProperties(PersistenceUnit persistenceUnit, Properties incomingProperties)
 	{
 		Map<String, String> props = new HashMap<>();
-		HibernateEntityManagerProperties.getDefaultProperties()
-		                                .process(persistenceUnit, incomingProperties);
-		if (HibernateEntityManagerProperties.getPersistenceUnitSpecificMappings()
-		                                    .containsKey(persistenceUnit.getName()))
+		HibernateEntityManagerIProperties.getDefaultProperties()
+		                                 .process(persistenceUnit, incomingProperties);
+		if (HibernateEntityManagerIProperties.getPersistenceUnitSpecificMappings()
+		                                     .containsKey(persistenceUnit.getName()))
 		{
-			HibernateEntityManagerProperties.getPersistenceUnitSpecificMappings()
-			                                .get(persistenceUnit.getName())
-			                                .process(persistenceUnit, incomingProperties);
+			HibernateEntityManagerIProperties.getPersistenceUnitSpecificMappings()
+			                                 .get(persistenceUnit.getName())
+			                                 .process(persistenceUnit, incomingProperties);
 		}
 		return props;
 	}
@@ -257,27 +257,27 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getDefaultProperties returns the defaultProperties of this HibernateEntityManagerProperties object.
+	 * Method getDefaultProperties returns the defaultProperties of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * The default properties to apply
 	 *
-	 * @return the defaultProperties (type HibernateEntityManagerProperties) of this HibernateEntityManagerProperties object.
+	 * @return the defaultProperties (type HibernateEntityManagerIProperties) of this HibernateEntityManagerIProperties object.
 	 */
-	public static HibernateEntityManagerProperties getDefaultProperties()
+	public static HibernateEntityManagerIProperties getDefaultProperties()
 	{
-		return HibernateEntityManagerProperties.defaultProperties;
+		return HibernateEntityManagerIProperties.defaultProperties;
 	}
 
 	/**
-	 * Method getPersistenceUnitSpecificMappings returns the persistenceUnitSpecificMappings of this HibernateEntityManagerProperties object.
+	 * Method getPersistenceUnitSpecificMappings returns the persistenceUnitSpecificMappings of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * A map of properties specific to a persistence unit
 	 *
-	 * @return the persistenceUnitSpecificMappings (type Map String, HibernateEntityManagerProperties) of this HibernateEntityManagerProperties object.
+	 * @return the persistenceUnitSpecificMappings (type Map String, HibernateEntityManagerIProperties) of this HibernateEntityManagerIProperties object.
 	 */
-	public static Map<String, HibernateEntityManagerProperties> getPersistenceUnitSpecificMappings()
+	public static Map<String, HibernateEntityManagerIProperties> getPersistenceUnitSpecificMappings()
 	{
-		return HibernateEntityManagerProperties.persistenceUnitSpecificMappings;
+		return HibernateEntityManagerIProperties.persistenceUnitSpecificMappings;
 	}
 
 	/**
@@ -307,11 +307,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getShowSql returns the showSql of this HibernateEntityManagerProperties object.
+	 * Method getShowSql returns the showSql of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether to set show sql true or not
 	 *
-	 * @return the showSql (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the showSql (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getShowSql()
 	{
@@ -319,12 +319,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setShowSql sets the showSql of this HibernateEntityManagerProperties object.
+	 * Method setShowSql sets the showSql of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether to set show sql true or not
 	 *
 	 * @param showSql
-	 * 		the showSql of this HibernateEntityManagerProperties object.
+	 * 		the showSql of this HibernateEntityManagerIProperties object.
 	 */
 	public void setShowSql(Boolean showSql)
 	{
@@ -332,11 +332,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getFormatSql returns the formatSql of this HibernateEntityManagerProperties object.
+	 * Method getFormatSql returns the formatSql of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether to format the output sql
 	 *
-	 * @return the formatSql (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the formatSql (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getFormatSql()
 	{
@@ -344,12 +344,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setFormatSql sets the formatSql of this HibernateEntityManagerProperties object.
+	 * Method setFormatSql sets the formatSql of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether to format the output sql
 	 *
 	 * @param formatSql
-	 * 		the formatSql of this HibernateEntityManagerProperties object.
+	 * 		the formatSql of this HibernateEntityManagerIProperties object.
 	 */
 	public void setFormatSql(Boolean formatSql)
 	{
@@ -357,11 +357,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseSqlComments returns the useSqlComments of this HibernateEntityManagerProperties object.
+	 * Method getUseSqlComments returns the useSqlComments of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether or not to use sql comments
 	 *
-	 * @return the useSqlComments (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useSqlComments (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseSqlComments()
 	{
@@ -369,12 +369,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseSqlComments sets the useSqlComments of this HibernateEntityManagerProperties object.
+	 * Method setUseSqlComments sets the useSqlComments of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Whether or not to use sql comments
 	 *
 	 * @param useSqlComments
-	 * 		the useSqlComments of this HibernateEntityManagerProperties object.
+	 * 		the useSqlComments of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseSqlComments(Boolean useSqlComments)
 	{
@@ -382,11 +382,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getEnableFetchOutsizeLadyLoad returns the enableFetchOutsizeLadyLoad of this HibernateEntityManagerProperties object.
+	 * Method getEnableFetchOutsizeLadyLoad returns the enableFetchOutsizeLadyLoad of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * If it should be possible to lazy fetch outside of transactions,
 	 *
-	 * @return the enableFetchOutsizeLadyLoad (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the enableFetchOutsizeLadyLoad (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getEnableFetchOutsizeLadyLoad()
 	{
@@ -394,12 +394,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setEnableFetchOutsizeLadyLoad sets the enableFetchOutsizeLadyLoad of this HibernateEntityManagerProperties object.
+	 * Method setEnableFetchOutsizeLadyLoad sets the enableFetchOutsizeLadyLoad of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * If it should be possible to lazy fetch outside of transactions,
 	 *
 	 * @param enableFetchOutsizeLadyLoad
-	 * 		the enableFetchOutsizeLadyLoad of this HibernateEntityManagerProperties object.
+	 * 		the enableFetchOutsizeLadyLoad of this HibernateEntityManagerIProperties object.
 	 */
 	public void setEnableFetchOutsizeLadyLoad(Boolean enableFetchOutsizeLadyLoad)
 	{
@@ -407,11 +407,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseJdbcMetadataDefaults returns the useJdbcMetadataDefaults of this HibernateEntityManagerProperties object.
+	 * Method getUseJdbcMetadataDefaults returns the useJdbcMetadataDefaults of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * it is used to control whether we should consult the JDBC metadata to determine
 	 *
-	 * @return the useJdbcMetadataDefaults (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useJdbcMetadataDefaults (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseJdbcMetadataDefaults()
 	{
@@ -419,12 +419,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseJdbcMetadataDefaults sets the useJdbcMetadataDefaults of this HibernateEntityManagerProperties object.
+	 * Method setUseJdbcMetadataDefaults sets the useJdbcMetadataDefaults of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * it is used to control whether we should consult the JDBC metadata to determine
 	 *
 	 * @param useJdbcMetadataDefaults
-	 * 		the useJdbcMetadataDefaults of this HibernateEntityManagerProperties object.
+	 * 		the useJdbcMetadataDefaults of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseJdbcMetadataDefaults(Boolean useJdbcMetadataDefaults)
 	{
@@ -432,11 +432,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseLobNonContextualCreation returns the useLobNonContextualCreation of this HibernateEntityManagerProperties object.
+	 * Method getUseLobNonContextualCreation returns the useLobNonContextualCreation of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Sets if lobs are non contextual
 	 *
-	 * @return the useLobNonContextualCreation (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useLobNonContextualCreation (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseLobNonContextualCreation()
 	{
@@ -444,12 +444,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseLobNonContextualCreation sets the useLobNonContextualCreation of this HibernateEntityManagerProperties object.
+	 * Method setUseLobNonContextualCreation sets the useLobNonContextualCreation of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Sets if lobs are non contextual
 	 *
 	 * @param useLobNonContextualCreation
-	 * 		the useLobNonContextualCreation of this HibernateEntityManagerProperties object.
+	 * 		the useLobNonContextualCreation of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseLobNonContextualCreation(Boolean useLobNonContextualCreation)
 	{
@@ -457,11 +457,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseGetGeneratedKeys returns the useGetGeneratedKeys of this HibernateEntityManagerProperties object.
+	 * Method getUseGetGeneratedKeys returns the useGetGeneratedKeys of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Sometimes required to actually set it to true
 	 *
-	 * @return the useGetGeneratedKeys (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useGetGeneratedKeys (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseGetGeneratedKeys()
 	{
@@ -469,12 +469,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseGetGeneratedKeys sets the useGetGeneratedKeys of this HibernateEntityManagerProperties object.
+	 * Method setUseGetGeneratedKeys sets the useGetGeneratedKeys of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Sometimes required to actually set it to true
 	 *
 	 * @param useGetGeneratedKeys
-	 * 		the useGetGeneratedKeys of this HibernateEntityManagerProperties object.
+	 * 		the useGetGeneratedKeys of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseGetGeneratedKeys(Boolean useGetGeneratedKeys)
 	{
@@ -482,11 +482,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseEnvers returns the useEnvers of this HibernateEntityManagerProperties object.
+	 * Method getUseEnvers returns the useEnvers of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Enables hibernate versioning
 	 *
-	 * @return the useEnvers (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useEnvers (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseEnvers()
 	{
@@ -494,12 +494,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseEnvers sets the useEnvers of this HibernateEntityManagerProperties object.
+	 * Method setUseEnvers sets the useEnvers of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Enables hibernate versioning
 	 *
 	 * @param useEnvers
-	 * 		the useEnvers of this HibernateEntityManagerProperties object.
+	 * 		the useEnvers of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseEnvers(Boolean useEnvers)
 	{
@@ -507,11 +507,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseQueryStartupCheck returns the useQueryStartupCheck of this HibernateEntityManagerProperties object.
+	 * Method getUseQueryStartupCheck returns the useQueryStartupCheck of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Performs named query startup checks
 	 *
-	 * @return the useQueryStartupCheck (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useQueryStartupCheck (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseQueryStartupCheck()
 	{
@@ -519,12 +519,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseQueryStartupCheck sets the useQueryStartupCheck of this HibernateEntityManagerProperties object.
+	 * Method setUseQueryStartupCheck sets the useQueryStartupCheck of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * Performs named query startup checks
 	 *
 	 * @param useQueryStartupCheck
-	 * 		the useQueryStartupCheck of this HibernateEntityManagerProperties object.
+	 * 		the useQueryStartupCheck of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseQueryStartupCheck(Boolean useQueryStartupCheck)
 	{
@@ -532,11 +532,11 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getPersistenceValidationMode returns the persistenceValidationMode of this HibernateEntityManagerProperties object.
+	 * Method getPersistenceValidationMode returns the persistenceValidationMode of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * validation-mode
 	 *
-	 * @return the persistenceValidationMode (type HibernatePersistenceValidationMode) of this HibernateEntityManagerProperties object.
+	 * @return the persistenceValidationMode (type HibernatePersistenceValidationMode) of this HibernateEntityManagerIProperties object.
 	 */
 	public HibernatePersistenceValidationMode getPersistenceValidationMode()
 	{
@@ -544,12 +544,12 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setPersistenceValidationMode sets the persistenceValidationMode of this HibernateEntityManagerProperties object.
+	 * Method setPersistenceValidationMode sets the persistenceValidationMode of this HibernateEntityManagerIProperties object.
 	 * <p>
 	 * validation-mode
 	 *
 	 * @param persistenceValidationMode
-	 * 		the persistenceValidationMode of this HibernateEntityManagerProperties object.
+	 * 		the persistenceValidationMode of this HibernateEntityManagerIProperties object.
 	 */
 	public void setPersistenceValidationMode(HibernatePersistenceValidationMode persistenceValidationMode)
 	{
@@ -557,9 +557,9 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseValidatorAutoRegisterListeners returns the useValidatorAutoRegisterListeners of this HibernateEntityManagerProperties object.
+	 * Method getUseValidatorAutoRegisterListeners returns the useValidatorAutoRegisterListeners of this HibernateEntityManagerIProperties object.
 	 *
-	 * @return the useValidatorAutoRegisterListeners (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useValidatorAutoRegisterListeners (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseValidatorAutoRegisterListeners()
 	{
@@ -567,10 +567,10 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseValidatorAutoRegisterListeners sets the useValidatorAutoRegisterListeners of this HibernateEntityManagerProperties object.
+	 * Method setUseValidatorAutoRegisterListeners sets the useValidatorAutoRegisterListeners of this HibernateEntityManagerIProperties object.
 	 *
 	 * @param useValidatorAutoRegisterListeners
-	 * 		the useValidatorAutoRegisterListeners of this HibernateEntityManagerProperties object.
+	 * 		the useValidatorAutoRegisterListeners of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseValidatorAutoRegisterListeners(Boolean useValidatorAutoRegisterListeners)
 	{
@@ -578,9 +578,9 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method getUseValidatorApplyToDDL returns the useValidatorApplyToDDL of this HibernateEntityManagerProperties object.
+	 * Method getUseValidatorApplyToDDL returns the useValidatorApplyToDDL of this HibernateEntityManagerIProperties object.
 	 *
-	 * @return the useValidatorApplyToDDL (type Boolean) of this HibernateEntityManagerProperties object.
+	 * @return the useValidatorApplyToDDL (type Boolean) of this HibernateEntityManagerIProperties object.
 	 */
 	public Boolean getUseValidatorApplyToDDL()
 	{
@@ -588,10 +588,10 @@ public class HibernateEntityManagerProperties
 	}
 
 	/**
-	 * Method setUseValidatorApplyToDDL sets the useValidatorApplyToDDL of this HibernateEntityManagerProperties object.
+	 * Method setUseValidatorApplyToDDL sets the useValidatorApplyToDDL of this HibernateEntityManagerIProperties object.
 	 *
 	 * @param useValidatorApplyToDDL
-	 * 		the useValidatorApplyToDDL of this HibernateEntityManagerProperties object.
+	 * 		the useValidatorApplyToDDL of this HibernateEntityManagerIProperties object.
 	 */
 	public void setUseValidatorApplyToDDL(Boolean useValidatorApplyToDDL)
 	{
