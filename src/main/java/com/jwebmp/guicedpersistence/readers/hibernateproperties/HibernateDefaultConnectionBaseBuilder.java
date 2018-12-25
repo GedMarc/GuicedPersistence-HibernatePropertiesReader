@@ -6,7 +6,10 @@ import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.Properties;
 
-public class HibernateDefaultConnectionBaseBuilderI
+/**
+ * Reads the default connection properties for hibernate and configures the connection accordingly
+ */
+public class HibernateDefaultConnectionBaseBuilder
 		implements IPropertiesConnectionInfoReader
 {
 
