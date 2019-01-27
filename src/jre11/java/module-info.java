@@ -1,11 +1,3 @@
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions;
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions;
-import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateDefaultConnectionBaseBuilder;
-import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
-import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateModuleExclusions;
-import com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader;
-import com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader;
-
 module com.jwebmp.guicedpersistence.readers.hibernateproperties {
 	requires com.jwebmp.guicedpersistence;
 	requires com.jwebmp.guicedinjection;
@@ -13,9 +5,9 @@ module com.jwebmp.guicedpersistence.readers.hibernateproperties {
 
 	exports com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
-	provides IPropertiesConnectionInfoReader with HibernateDefaultConnectionBaseBuilder;
-	provides IPropertiesEntityManagerReader with HibernateEntityManagerProperties;
+	provides com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateDefaultConnectionBaseBuilder;
+	provides com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
 
-	provides IGuiceScanJarExclusions with HibernateModuleExclusions;
-	provides IGuiceScanModuleExclusions with HibernateModuleExclusions;
+	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateModuleExclusions;
+	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateModuleExclusions;
 }
