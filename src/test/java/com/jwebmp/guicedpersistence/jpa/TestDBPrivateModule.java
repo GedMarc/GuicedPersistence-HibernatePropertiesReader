@@ -1,7 +1,7 @@
 package com.jwebmp.guicedpersistence.jpa;
 
-import com.jwebmp.guicedpersistence.db.DatabaseModule;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
+import com.jwebmp.guicedpersistence.db.DatabaseModule;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import javax.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ public class TestDBPrivateModule
 
 	public TestDBPrivateModule()
 	{
-		setAutoStart(true);
+
 	}
 
 	@NotNull
