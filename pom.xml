@@ -55,29 +55,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <type>jar</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.xml.bind</groupId>
-                    <artifactId>jaxb-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>jakarta.xml.bind</groupId>
+            <groupId>com.jwebmp.thirdparty</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${glassfish.jaxb.version}</version>
             <type>jar</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>javax.activation-api</artifactId>
-                    <groupId>javax.activation</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jakarta.activation-api</artifactId>
-                    <groupId>jakarta.activation</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -101,40 +84,4 @@
         <url>http://jwebmp.com/teamcity</url>
     </ciManagement>
 
-    <profiles>
-        <profile>
-            <id>jdk8</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.jwebmp.thirdparty</groupId>
-                    <artifactId>javax.transaction</artifactId>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.moditect</groupId>
-                        <artifactId>moditect-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>add-module-infos</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>add-module-info</goal>
-                                </goals>
-                                <configuration>
-                                    <overwriteExistingFiles>true</overwriteExistingFiles>
-                                    <module>
-                                        <moduleInfoFile>
-                                            src/jre11/java/module-info.java
-                                        </moduleInfoFile>
-                                    </module>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
