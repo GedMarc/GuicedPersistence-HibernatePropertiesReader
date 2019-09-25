@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jwebmp.guicedee.persistence</groupId>
+        <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
         <artifactId>persistence-parent</artifactId>
         <version>0.0.0_0-SNAPSHOT</version>
     </parent>
@@ -20,7 +20,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>guiced-persistence</artifactId>
             <type>jar</type>
             </dependency>
@@ -52,13 +52,13 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty.hibernate</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>hibernate-core</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty.hibernate</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>hibernate-validator</artifactId>
             <type>jar</type>
             </dependency>

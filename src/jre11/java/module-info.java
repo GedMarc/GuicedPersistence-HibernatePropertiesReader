@@ -3,6 +3,8 @@ module com.jwebmp.guicedpersistence.readers.hibernateproperties {
 	requires com.jwebmp.guicedinjection;
 	requires java.validation;
 
+	requires java.persistence;
+
 	exports com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
 	provides com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateDefaultConnectionBaseBuilder;
@@ -10,4 +12,6 @@ module com.jwebmp.guicedpersistence.readers.hibernateproperties {
 
 	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateModuleExclusions;
 	provides com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions with com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateModuleExclusions;
+
+
 }
