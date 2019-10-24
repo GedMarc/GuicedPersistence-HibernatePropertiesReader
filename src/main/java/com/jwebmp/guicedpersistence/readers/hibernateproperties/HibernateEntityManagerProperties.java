@@ -1,6 +1,6 @@
-package com.jwebmp.guicedpersistence.readers.hibernateproperties;
+package com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-import com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader;
+import com.guicedee.jpms.guicedpersistence.services.IPropertiesEntityManagerReader;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.HashMap;
@@ -170,7 +170,7 @@ public class HibernateEntityManagerProperties
 	 *
 	 * @return The string,string map to apply
 	 *
-	 * @see com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader#processProperties(PersistenceUnit, Properties)
+	 * @see IPropertiesEntityManagerReader#processProperties(PersistenceUnit, Properties)
 	 */
 	@Override
 	public Map<String, String> processProperties(PersistenceUnit persistenceUnit, Properties incomingProperties)

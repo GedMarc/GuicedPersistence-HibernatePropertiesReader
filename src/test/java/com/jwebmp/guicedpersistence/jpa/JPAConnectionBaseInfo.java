@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.jpa;
+package com.guicedee.jpms.guicedpersistence.jpa;
 
-import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.jpms.guicedpersistence.db.ConnectionBaseInfo;
+import com.guicedee.jpms.logger.LogFactory;
 
 import javax.sql.DataSource;
 import java.util.logging.Logger;
@@ -9,6 +9,9 @@ import java.util.logging.Logger;
 public class JPAConnectionBaseInfo
 		extends ConnectionBaseInfo
 {
+	private static final Logger log = LogFactory.getLog("JPAConnectionBaseInfo");
+	private boolean driverRegistered;
+
 	/**
 	 * You can fetch it directly from the entity manager using (DataSource)managerFactory.getConnectionFactory()
 	 *

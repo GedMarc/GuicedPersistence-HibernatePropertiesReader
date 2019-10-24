@@ -1,7 +1,7 @@
-package com.jwebmp.guicedpersistence.readers.hibernateproperties;
+package com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarExclusions;
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleExclusions;
+import com.guicedee.jpms.guicedinjection.interfaces.IGuiceScanJarExclusions;
+import com.guicedee.jpms.guicedinjection.interfaces.IGuiceScanModuleExclusions;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class HibernateModuleExclusions
 	public @NotNull Set<String> excludeModules()
 	{
 		Set<String> strings = new HashSet<>();
-		strings.add("com.jwebmp.guicedpersistence.readers.hibernateproperties");
+		strings.add("com.guicedee.jpms.guicedpersistence.readers.hibernateproperties");
 		return strings;
 	}
 }

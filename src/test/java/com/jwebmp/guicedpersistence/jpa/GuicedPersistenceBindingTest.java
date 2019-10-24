@@ -1,11 +1,10 @@
-package com.jwebmp.guicedpersistence.jpa;
+package com.guicedee.jpms.guicedpersistence.jpa;
 
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.logger.LogFactory;
-import com.jwebmp.logger.logging.LogColourFormatter;
+import com.guicedee.jpms.guicedinjection.GuiceContext;
+import com.guicedee.jpms.logger.LogFactory;
+import com.guicedee.jpms.logger.logging.LogColourFormatter;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
 import java.util.logging.Level;
 
 public class GuicedPersistenceBindingTest
@@ -16,8 +15,5 @@ public class GuicedPersistenceBindingTest
 		LogFactory.configureConsoleSingleLineOutput(Level.FINE);
 		LogColourFormatter.setRenderBlack(false);
 		GuiceContext.inject();
-		EntityManager em = GuiceContext.get(EntityManager.class, TestCustomPersistenceLoader.class);
-		System.out.println(em.isOpen());
-
 	}
 }

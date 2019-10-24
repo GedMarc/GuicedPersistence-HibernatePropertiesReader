@@ -1,4 +1,4 @@
-package com.jwebmp.guicedpersistence.readers.hibernateproperties;
+package com.guicedee.guicedpersistence.readers.hibernateproperties;
 
 /**
  * validation-mode
