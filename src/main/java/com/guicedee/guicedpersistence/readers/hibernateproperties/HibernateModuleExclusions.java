@@ -1,15 +1,13 @@
 package com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-import com.guicedee.jpms.guicedinjection.interfaces.IGuiceScanJarExclusions;
-import com.guicedee.jpms.guicedinjection.interfaces.IGuiceScanModuleExclusions;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
 public class HibernateModuleExclusions
-		implements IGuiceScanJarExclusions<HibernateModuleExclusions>,
-				           IGuiceScanModuleExclusions<HibernateModuleExclusions>
+		implements com.guicedee.guicedinjection.interfaces.IGuiceScanJarExclusions<HibernateModuleExclusions>,
+				           com.guicedee.guicedinjection.interfaces.IGuiceScanModuleExclusions<HibernateModuleExclusions>
 {
 	@Override
 	public @NotNull Set<String> excludeJars()

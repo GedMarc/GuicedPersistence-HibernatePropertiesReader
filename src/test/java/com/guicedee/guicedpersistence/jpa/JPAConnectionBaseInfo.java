@@ -1,7 +1,7 @@
-package com.guicedee.jpms.guicedpersistence.jpa;
+package com.guicedee.guicedpersistence.jpa;
 
-import com.guicedee.jpms.guicedpersistence.db.ConnectionBaseInfo;
-import com.guicedee.jpms.logger.LogFactory;
+import com.guicedee.guicedpersistence.db.ConnectionBaseInfo;
+import com.guicedee.logger.LogFactory;
 
 import javax.sql.DataSource;
 import java.util.logging.Logger;

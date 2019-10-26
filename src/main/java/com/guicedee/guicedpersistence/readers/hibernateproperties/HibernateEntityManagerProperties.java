@@ -1,6 +1,6 @@
 package com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-import com.guicedee.jpms.guicedpersistence.services.IPropertiesEntityManagerReader;
+
 import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.Properties;
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class HibernateEntityManagerProperties
-		implements IPropertiesEntityManagerReader
+		implements com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader
 {
 	/**
 	 * A map of properties specific to a persistence unit
@@ -170,7 +170,7 @@ public class HibernateEntityManagerProperties
 	 *
 	 * @return The string,string map to apply
 	 *
-	 * @see IPropertiesEntityManagerReader#processProperties(PersistenceUnit, Properties)
+
 	 */
 	@Override
 	public Map<String, String> processProperties(PersistenceUnit persistenceUnit, Properties incomingProperties)

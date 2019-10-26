@@ -1,8 +1,8 @@
-package com.guicedee.jpms.guicedpersistence.jpa;
+package com.guicedee.guicedpersistence.jpa;
 
-import com.guicedee.jpms.guicedinjection.GuiceContext;
-import com.guicedee.jpms.logger.LogFactory;
-import com.guicedee.jpms.logger.logging.LogColourFormatter;
+import com.guicedee.guicedinjection.GuiceContext;
+import com.guicedee.logger.LogFactory;
+import com.guicedee.logger.logging.LogColourFormatter;
 import org.junit.jupiter.api.Test;
 
 import java.util.logging.Level;

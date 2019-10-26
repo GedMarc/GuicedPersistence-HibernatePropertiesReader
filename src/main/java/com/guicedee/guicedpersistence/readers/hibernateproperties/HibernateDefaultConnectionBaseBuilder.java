@@ -1,7 +1,5 @@
 package com.guicedee.guicedpersistence.readers.hibernateproperties;
 
-import com.guicedee.jpms.guicedpersistence.db.ConnectionBaseInfo;
-import com.guicedee.jpms.guicedpersistence.services.IPropertiesConnectionInfoReader;
 import com.oracle.jaxb21.PersistenceUnit;
 
 import java.util.Properties;
@@ -10,11 +8,11 @@ import java.util.Properties;
  * Reads the default connection properties for hibernate and configures the connection accordingly
  */
 public class HibernateDefaultConnectionBaseBuilder
-		implements IPropertiesConnectionInfoReader
+		implements com.guicedee.guicedpersistence.services.IPropertiesConnectionInfoReader
 {
 
 	@Override
-	public ConnectionBaseInfo populateConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties, ConnectionBaseInfo cbi)
+	public com.guicedee.guicedpersistence.db.ConnectionBaseInfo populateConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties, com.guicedee.guicedpersistence.db.ConnectionBaseInfo cbi)
 	{
 		for (String prop : filteredProperties.stringPropertyNames())
 		{

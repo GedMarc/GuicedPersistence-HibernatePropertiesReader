@@ -1,4 +1,4 @@
-package com.guicedee.jpms.guicedpersistence.jpa;
+package com.guicedee.guicedpersistence.jpa;
 
 import com.google.inject.BindingAnnotation;
 
