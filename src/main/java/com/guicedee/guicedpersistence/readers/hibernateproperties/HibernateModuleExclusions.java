@@ -21,7 +21,7 @@ public class HibernateModuleExclusions
 	public @NotNull Set<String> excludeModules()
 	{
 		Set<String> strings = new HashSet<>();
-		strings.add("com.guicedee.jpms.guicedpersistence.readers.hibernateproperties");
+		strings.add("com.guicedee.guicedpersistence.readers.hibernateproperties");
 		return strings;
 	}
 }
