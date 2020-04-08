@@ -1,7 +1,6 @@
 module com.guicedee.guicedpersistence.readers.hibernateproperties {
-	requires com.guicedee.guicedpersistence;
-	requires com.guicedee.guicedinjection;
-	requires java.validation;
+	requires transitive com.guicedee.guicedpersistence;
+	requires transitive java.validation;
 
 	requires transitive org.hibernate.orm.core;
 
